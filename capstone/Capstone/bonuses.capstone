@@ -1,0 +1,28 @@
+Open/closed season
+-get substring month from dates entered and compare to open season dates
+-return true/false
+-if false, do not start get sites method and instead return message 
+
+if @campground = 'Seawall' 
+	if (month >= 5 AND month <= 9)
+	return = 'Open Season'
+
+if @campground = 'Schoodic Woods' AND (month >=5 AND month <= 10)
+	return =                                                                                                                       
+or 'The unnamed Primitive Campsites'
+5-11
+
+
+for site specifications
+--fill all properties for site
+--get user input for specifications
+--pull properties and compare
+
+
+---to get park-wide available sites
+Select c.[name] 'Campground', s.[site_number] 'Site_Number', (DateDiff(day, '20180706', '20180708') * c.[daily_fee]) 'Total_Cost' 
+From park join campground as c on c.[park_id] = park.park_id 
+inner join [site] as s on (s.campground_id = c.campground_id)
+Where site_id not in (select site_id from reservation as res where res.from_date > '20180706' and res.to_date < '20180708') 
+AND park.name = 'Arches' 
+Order By (DateDiff(day, '20180706', '20180708' ) * c.[daily_fee])

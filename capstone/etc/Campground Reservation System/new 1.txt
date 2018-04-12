@@ -1,0 +1,12 @@
+create schema
+fill database
+integrate data base in code
+
+
+data base table to hold inventory
+writing log to data base --table
+data, running total of how many items have been purchased
+	-read from table in startup (running total) instead of overriding every time
+		-consider that if a product changes price, the previous data will be thrown out
+		
+		
